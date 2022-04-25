@@ -1,0 +1,22 @@
+<%- include('./partials/_navigation.ejs'); %>
+
+	<div id="content">
+		<div>
+			<h3>Register and Account</h3>
+			<p>This website template has been designed by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a> for you, for free. You can replace all this text with your own text. You can remove any link to our website from this website template, you're free to use this website template without linking back to us. If you're having problems editing this website template, then don't hesitate to ask for help on the <a href="http://www.freewebsitetemplates.com/forum/">Forum</a>.</p>
+			<form action="#" id="register" style="display: flex; flex-direction: column; align-items: center;">
+				<div class="first" style="height: 350px;">
+					<fieldset>
+						<label for="name"><strong>Name:</strong></label><input type="text" maxlength="55" id="name" class="inputtext" />
+						<label for="email"><strong>Email:</strong></label><input type="text" maxlength="55" id="email" class="inputtext" />
+						<label for="password"><strong>Password:</strong></label><input type="text" maxlength="55" id="password" class="inputtext" />
+						<label for="confirmpass"><strong>Confirm Password:</strong></label><input type="text" maxlength="55" id="confirmpass" class="inputtext" />
+						<label for="role"></label><input type="hidden" id="role" class="inputtext" />
+
+					</fieldset>
+				</div>
+				<input type="submit" value="" id="createaccount" />
+			</form>
+		</div>
+	</div>
+	<%-include('./partials/_footer.ejs'); %>
