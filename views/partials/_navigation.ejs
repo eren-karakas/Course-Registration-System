@@ -18,17 +18,32 @@
 <body>
 	<div id="header">
 		<div>
-			<div id="navigation">
+			<div id="navigation" style="width: 830px;">
 				<div>
-					<ul>
-						<li class="<%= page_name === 'index' && 'current' %>"><a href="/">Home</a></li>
-						<li class="<%= page_name === 'about' && 'current' %>"><a href="/about">About us</a></li>
-						<li class="<%= page_name === 'contact' && 'current' %>"><a href="/contact">Contact Us</a></li>
-						<li class="<%= page_name === 'lessons' && 'current' %>"><a href="/lessons">Lessons</a></li>
-						<li class="<%= page_name === 'teachers' && 'current' %>"><a href="/teachers">Teachers</a></li>
-						<li class="<%= page_name === 'login' && 'current' %>"><a href="/login">Login</a></li>
-						<li class="<%= page_name === 'register' && 'current' %>"><a href="/register">Register</a></li>
-					</ul>
+					<% if(userIN){ %>
+						<ul style="width: 820px;">
+							<li class="<%= page_name === 'index' && 'current' %>"><a href="/">Home</a></li>
+							<li class="<%= page_name === 'about' && 'current' %>"><a href="/about">About us</a></li>
+							<li class="<%= page_name === 'contact' && 'current' %>"><a href="/contact">Contact Us</a></li>
+							<li class="<%= page_name === 'lessons' && 'current' %>"><a href="/lessons">Lessons</a></li>
+							<li class="<%= page_name === 'teachers' && 'current' %>"><a href="/teachers">Teachers</a></li>
+							<li class="<%= page_name === 'dashboard' && 'current' %>"><a href="/users/dashboard">Dashboard</a></li>
+							<li><a style="padding-left: 0px;" href="/users/logout">Logout</a></li>
+						</ul>
+					<% } %>
+
+					<% if(!userIN){ %>
+						<ul>
+							<li class="<%= page_name === 'index' && 'current' %>"><a href="/">Home</a></li>
+							<li class="<%= page_name === 'about' && 'current' %>"><a href="/about">About us</a></li>
+							<li class="<%= page_name === 'contact' && 'current' %>"><a href="/contact">Contact Us</a></li>
+							<li class="<%= page_name === 'lessons' && 'current' %>"><a href="/lessons">Lessons</a></li>
+							<li class="<%= page_name === 'teachers' && 'current' %>"><a href="/teachers">Teachers</a></li>
+							<li class="<%= page_name === 'login' && 'current' %>"><a href="/login">Login</a></li>
+							<li class="<%= page_name === 'register' && 'current' %>"><a href="/register">Register</a></li>
+						</ul>
+					<% } %>
+					
 				</div>
 			</div>
 		</div>

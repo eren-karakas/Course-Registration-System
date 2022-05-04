@@ -1,0 +1,24 @@
+<%- include('./partials/_navigation.ejs'); %>
+
+	<% if(user){ %>
+
+		<% if(user.role === 'Student'){ %>
+			<div>
+				<h1>Student Dashboard</h1>
+			</div>
+		<% } %>
+	
+		<% if(user.role === 'Teacher'){ %>
+			<div>
+				<h1>Teacher Dashboard</h1>
+			</div>
+		<% } %>
+	
+		<% if(user.role === 'Admin'){ %>
+			<div>
+				<h1>Admin Dashboard</h1>
+			</div>
+		<% } %>
+
+	<% } %>
+	<%-include('./partials/_footer.ejs'); %>
