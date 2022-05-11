@@ -9,8 +9,72 @@
 		<% } %>
 	
 		<% if(user.role === 'Teacher'){ %>
-			<div>
-				<h1>Teacher Dashboard</h1>
+			<div class="con">
+				<a href="/users/dashboard" class="cancel-btn"> Close </a>
+				<form action="/courses/create" method="post">
+					<input type="text" name="name" id="" placeholder="Course Name">
+					<input type="text" name="description" id="" placeholder="Course Description">
+					<input type="hidden" name="role" value="<%= user.role %>">		
+					<input type="submit" value="Add Course">
+				</form>
+			</div>
+
+			<div class="container">
+				<div class="title">
+					<h1>Welcome <%= user.name %> (Role : <%= user.role %>)</h1>
+				</div>
+				<div class="add-course">
+					<button class="add-btn">Add Course</button>
+				</div>
+			</div>
+				
+			<div class="courses">
+				<div class="course-list">
+					<% for(let i = 0; i < courses.length; i++){ %>
+						<div class="course-container">						
+							<div class="course-img">
+								<img src="../images/map-in-grass2.jpg" alt="" srcset="">
+							</div>
+							<div class="course-name">
+								<h1><%= courses[i].name %></h1>
+							</div>
+							<div class="course-desc">
+								<p><%= courses[i].description %></p>
+							</div>
+							<div class="buttons">
+								<a href="/courses/<%= courses[i].slug %>?_method=DELETE" onclick="return confirm('Are you sure?')"  class="delete-popup">Delete</a>
+								<button class="update-popup" onclick="updateModalOpen()">Update</button>
+							</div>
+						</div>
+					<!--UPDATE MODAL-->	
+					<div class="update-con">
+						<a href="/users/dashboard" class="cancel-btn"> Close </a>
+						<form method="post" action="/courses/<%= courses[i].slug %>?_method=PUT" class="form-horizontal">
+							<div>
+								<div>
+									<input type="text" name="name" value="<%= courses[i].name %>" placeholder="Course Name">
+								</div>
+							</div>
+							<div>
+								<div>
+									<input type="hidden" name="role" value="<%= user.role %>">
+								</div>
+							</div>
+							<div>
+								<div>
+									<textarea name="description"
+									rows="8" placeholder="Course Description" required><%= courses[i].description%></textarea>
+								</div>
+							</div>
+							<div>
+								<button type="submit">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+					<% } %>
+				</div>
 			</div>
 		<% } %>
 	

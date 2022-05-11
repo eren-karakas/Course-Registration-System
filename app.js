@@ -1,9 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ejs = require('ejs');
+const methodOverride = require('method-override')
 const session = require('express-session');
 const pageRoutes = require('./routes/pageRoutes');
 const userRoutes = require('./routes/userRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+
 
 const app = express();
 const port = 3000;
@@ -32,6 +35,11 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+app.use(
+  methodOverride('_method', {
+    methods: ['POST', 'GET'],
+  }
+));
 
 // ROUTES
 app.use('*', (req, res, next) => {
@@ -40,6 +48,8 @@ app.use('*', (req, res, next) => {
 })
 app.use('/', pageRoutes);
 app.use('/users', userRoutes)
+app.use('/courses', courseRoutes)
+
 
 
 app.listen(port, server, () => {

@@ -6,8 +6,9 @@ body {
 	font-family: 'AndikaRegular';
 	font-size: 14px;
 	margin: 0;
-	min-width: 950px;
+	
 	padding: 0;
+	width: 100vw;
 }
 
 a {
@@ -705,4 +706,134 @@ p a {
          url('../fonts/carterone-webfont.svg#CarterOneRegular') format('svg');
     font-weight: normal;
     font-style: normal;
+}
+
+/*-----------------*/
+
+.backpop{
+    position: absolute;
+    width: 100vw;
+    height: 2160px;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 2000;
+    visibility: hidden;
+}
+
+.con{
+    position: absolute;
+    width: 450px;
+    height: 250px;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 2001;
+    top: 48%;
+    left: 37%;
+    visibility: hidden;
+    border: 1px solid rgb(106, 189, 106);
+}
+
+.con form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.con form input[type='text']{
+	margin-top: 15px;
+	width: 250px;
+	height: 40px;
+}
+
+.settings{
+	margin-top: 25px;
+}
+
+.con form input[type='submit']{
+	margin-top: 15px;
+	border-radius: 15px;
+	width: 120px;
+	height: 40px;
+}
+
+.con .cancel-btn{
+	display: block;
+	width: 37px;
+	position: relative;
+	border-radius: 40%;
+	left: 390px;
+	background-color: #a5a4a4;
+	text-decoration: none;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.container .title h1{
+	color: white;
+}
+
+.container .add-course .add-btn{
+	width: 125px;
+	height: 35px;
+	border-radius: 12px;
+}
+
+.courses{
+	display: flex;
+	justify-content: center;
+	color: white;
+}
+
+.course-list{
+	display: flex;
+	flex-direction: row;
+}
+
+.course-list .course-container{
+	display: flex;
+	flex-direction: column;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	align-items: center;
+}
+
+.course-list .buttons .delete-popup{
+	background-color: red;
+}
+
+.course-list .buttons .update-popup{
+	background-color: green;
+}
+
+.update-con{
+	background-color: white;
+	width: 400px;
+	height: 200px;
+	z-index: 2001;
+	position: absolute;
+	left: 40%;
+	visibility: hidden;
+}
+
+.update-con form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.update-con input[type='text'], .update-con textarea{
+	width: 250px;
+	height: 35px;
+	margin-bottom: 20px;
+}
+
+.update-con a{
+	position: relative;
+	left: 350px;
+	text-decoration: none;
 }

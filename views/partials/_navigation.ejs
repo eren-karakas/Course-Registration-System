@@ -16,13 +16,16 @@
 	<![endif]-->
 </head>
 <body>
+	<div class="backpop">
+		
+	</div>
 	<div id="header">
 		<div>
 			<div id="navigation" style="width: 830px;">
 				<div>
 					<% if(userIN){ %>
 						<ul style="width: 820px;">
-							<li class="<%= page_name === 'index' && 'current' %>"><a href="/">Home</a></li>
+							<li class="<%= page_name === 'home' && 'current' %>"><a href="/">Home</a></li>
 							<li class="<%= page_name === 'about' && 'current' %>"><a href="/about">About us</a></li>
 							<li class="<%= page_name === 'contact' && 'current' %>"><a href="/contact">Contact Us</a></li>
 							<li class="<%= page_name === 'lessons' && 'current' %>"><a href="/lessons">Lessons</a></li>

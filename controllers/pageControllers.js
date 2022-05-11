@@ -1,6 +1,11 @@
-const getHomePage = (req, res) => {
+const Course = require('../models/Course');
+
+const getHomePage = async (req, res) => {
+    const allCourses = await Course.find().sort('-createdAt').limit(3);
+
     res.status(200).render('home', {
-        page_name: 'home'
+        page_name: 'home',
+        allCourses
     });
 }
 
