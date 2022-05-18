@@ -26,7 +26,11 @@ const UserSchema = new Schema({
     slug: {
         type: String,
         unique: true
-    }
+    },
+    courses : [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }]
 });
 
 UserSchema.pre('save', function(next){

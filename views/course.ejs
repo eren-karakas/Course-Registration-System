@@ -34,7 +34,6 @@
 
 	<% if(userIN && user.role == 'Student'){ %>
 		<div id="content">
-			<h1>St</h1>
 			<div>
 				<div>
 					<a href="index.html"><img src="../images/map-in-grass2.jpg" alt="Image" /></a>
@@ -45,6 +44,18 @@
 				<b>Template details <br /><br /></b>
 				<p>Version 3 <br />Website Template details, discussion and updates for this <a href="http://www.freewebsitetemplates.com/forum/f18/ecological-website-template-18798">Ecological Website Template</a>. <br />Website Template design by <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>. <br />Please feel free to remove some or all the text and links of this page and
 					replace it with your own About content.</p>
+				<% if(!(user.courses.includes(course._id))){ %>
+					<% if(course.studentCount.length > 0){ %>
+						<p>Course limit is over</p>
+					<% } %>
+
+					<% if(!(course.studentCount.length > 0)){ %>
+					<form action="/courses/enroll" method="post">
+						<input type="hidden" name="course_id" value="<%= course._id %>">
+						<button class="btn btn-lg btn-warning text-white"><span>Enroll</span></button>
+					</form>	
+					<% } %>
+				<% } %>	
 			</div>
 		</div>
 		<% } %>

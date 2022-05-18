@@ -1,10 +1,18 @@
 <%- include('./partials/_navigation.ejs'); %>
 
-	<div id="content">
-		<div class="section">
-			
-		</div>
-		<div>
-		</div>
-	</div>
+		<div class="courses">
+			<div class="course-list" style="margin-top: 15px;">
+				<% for(let i = 0; i < allTeachers.length; i++){ %>
+					<div class="course-container" style="border: 1px solid red;">						
+						<div class="course-name">
+							<h1><%= allTeachers[i].name %></a></h1>
+						</div>
+						<div class="course-desc">
+							<p><%= allTeachers[i].email %></p>
+						</div>
+
+					</div>
+				<% } %>
+			</div>
+		</div>	
 	<%-include('./partials/_footer.ejs'); %>

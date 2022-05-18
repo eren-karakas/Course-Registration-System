@@ -1,7 +1,8 @@
+const User = require('../models/User');
 const Course = require('../models/Course');
 
 const getHomePage = async (req, res) => {
-    const allCourses = await Course.find().sort('-createdAt').limit(3);
+    const allCourses = await Course.find().sort('-createdAt').limit(3).populate('user');
 
     res.status(200).render('home', {
         page_name: 'home',
@@ -21,15 +22,21 @@ const getContactPage = (req, res) => {
     });
 }
 
-const getLessonsPage = (req, res) => {
+const getLessonsPage = async (req, res) => {
+    const allCourses = await Course.find().sort('-createdAt')
+
     res.status(200).render('lessons', {
-        page_name: 'lessons'
+        page_name: 'lessons',
+        allCourses
     });
 }
 
-const getTeachersPage = (req, res) => {
+const getTeachersPage = async (req, res) => {
+    const allTeachers = await User.find({role: 'Teacher'});
+
     res.status(200).render('teachers', {
-        page_name: 'teachers'
+        page_name: 'teachers',
+        allTeachers
     });
 }
 

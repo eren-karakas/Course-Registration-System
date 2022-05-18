@@ -3,9 +3,35 @@
 	<% if(user){ %>
 
 		<% if(user.role === 'Student'){ %>
-			<div>
-				<h1>Student Dashboard</h1>
+			<div class="container">
+				<div class="title">
+					<h1>Welcome <%= user.name %> (Role : <%= user.role %>)</h1>
+				</div>			
 			</div>
+
+			<div class="courses">
+				<div class="course-list">
+					<% for(let i = 0; i < user.courses.length; i++){ %>
+						<div class="course-container">						
+							<div class="course-img">
+								<img src="../images/map-in-grass2.jpg" alt="" srcset="">
+							</div>
+							<div class="course-name">
+								<h1><a href="/courses/<%= user.courses[i].slug %>"><%= user.courses[i].name %></a></h1>
+							</div>
+							<div class="course-desc">
+								<p><%= user.courses[i].description %></p>
+							</div>
+							<div class="buttons">
+								<form action="/courses/release" method="post">
+									<input type="hidden" name="course_id" value="<%= user.courses[i]._id %>">
+									<button><span>Release</span></button>
+								</form>
+							</div>
+						</div>
+					<% } %>
+				</div>
+			</div>	
 		<% } %>
 	
 		<% if(user.role === 'Teacher'){ %>
@@ -42,7 +68,11 @@
 								<p><%= courses[i].description %></p>
 							</div>
 							<div class="buttons">
-								<a href="/courses/<%= courses[i].slug %>?_method=DELETE" onclick="return confirm('Are you sure?')"  class="delete-popup">Delete</a>
+								<form action="/courses/<%= courses[i].slug %>?_method=DELETE" method="post">
+									<!--<a href="/courses/<%= courses[i].slug %>?_method=DELETE" onclick="return confirm('Are you sure?')"  class="delete-popup">Delete</a>-->
+									<input type="hidden" value="<%= user.role %>" name="role">
+									<button onclick="return confirm('Are you sure?')"  class="delete-popup">Delete</button>
+								</form>
 								<button class="update-popup" onclick="updateModalOpen()">Update</button>
 							</div>
 						</div>
@@ -79,9 +109,27 @@
 		<% } %>
 	
 		<% if(user.role === 'Admin'){ %>
-			<div>
-				<h1>Admin Dashboard</h1>
+			<div class="container">
+				<div class="title">
+					<h1>Welcome <%= user.name %> (Role : <%= user.role %>)</h1>
+				</div>			
 			</div>
+
+			<div class="user-container">
+				<div class="user-info">
+					<h2>All User</h2>
+					<% for(let i = 0; i < allUsers.length; i++){ %>
+						<div class="user">
+							<p><%= allUsers[i].name %></p>
+							<p><%= allUsers[i].role %></p>
+							<a href="/users/<%= allUsers[i]._id %>?_method=DELETE" 
+								onclick="return confirm('ARE YOU SURE')">
+								<span>DELETE</span></a>
+						</div>
+					<% } %>
+				</div>
+			</div>
+
 		<% } %>
 
 	<% } %>

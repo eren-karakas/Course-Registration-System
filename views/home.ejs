@@ -21,10 +21,11 @@
 				<ul>
 					<% for(let i = 0; i < allCourses.length; i++){ %>
 						<li class="first" style="margin-right: 20px;">
-							<a href="/lesson/<%= allCourses[i].slug %>"><img src="../images/map-in-grass.jpg" alt="Image" /></a>
+							<a href="/courses/<%= allCourses[i].slug %>"><img src="../images/map-in-grass.jpg" alt="Image" /></a>
 							<span></span>
 							<p><%= allCourses[i].description %></p>
-							<a class="link" href="/lesson/<%= allCourses[i].slug %>"><%= allCourses[i].name %></a>
+							<a class="link" href="/courses/<%= allCourses[i].slug %>"><%= allCourses[i].name %></a>
+							<p>Teacher Name : <%= allCourses[i].user.name %></p>
 						</li>
 					<% } %>
 				</ul>
@@ -56,6 +57,7 @@
 							<span></span>
 							<p><%= allCourses[i].description %></p>
 							<a class="link" href="/courses/<%= allCourses[i].slug %>"><%= allCourses[i].name %></a>
+							<p>Teacher Name : <%= allCourses[i].user.name %></p>
 						</li>
 					<% } %>
 				</ul>

@@ -37,9 +37,45 @@ const updateCourse = async (req, res) => {
     res.status(200).redirect('/users/dashboard');
 }
 
+const enrollCourse = async (req, res) => {
+    try{
+        const user = await User.findById(req.session.userID);
+        const course = await Course.findById(req.body.course_id)
+
+        await user.courses.push({ _id: req.body.course_id });
+        await course.studentCount.push({ _id: req.session.userID });
+
+        await user.save();
+        await course.save();
+
+        res.status(200).redirect('/users/dashboard');
+    } catch(err){
+        console.log(err)
+    }
+}
+
+const releaseCourse = async (req, res) => {
+    try{
+        const user = await User.findById(req.session.userID);
+        const course = await Course.findById(req.body.course_id);
+
+        await user.courses.pull({ _id: req.body.course_id });
+        await course.studentCount.pull({ _id: req.session.userID });
+
+        await user.save();
+        await course.save();
+
+        res.status(200).redirect('/users/dashboard');
+    } catch(err){
+        console.log(err)
+    }
+}
+
 module.exports = {
     createCourse,
     getCourse,
     deleteCourse,
-    updateCourse
+    updateCourse,
+    enrollCourse,
+    releaseCourse
 }

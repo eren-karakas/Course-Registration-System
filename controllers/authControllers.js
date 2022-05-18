@@ -40,13 +40,16 @@ const loginUser = async (req, res) => {
 
 const getDashboardPage = async (req, res) => {
 
-  const user = await User.findOne({_id : req.session.userID})
+  const user = await User.findOne({_id : req.session.userID}).populate('courses');
   const courses = await Course.find({user : req.session.userID})
+
+  const allUsers = await User.find();
 
   res.status(200).render('dashboard',{
     page_name : 'dashboard',
     user,
-    courses
+    courses,
+    allUsers
   });
 }
 
@@ -56,9 +59,18 @@ const logoutUser = async (req, res) => {
   })
 }
 
+const deleteUser = async (req, res) => {
+  await User.findByIdAndDelete(req.params.id)
+  const courses = await Course.deleteMany({user:req.params.id})
+  console.log(courses)
+
+  res.status(200).redirect('/users/dashboard');
+}
+
 module.exports = {
     createUser,
     loginUser,
     getDashboardPage,
-    logoutUser
+    logoutUser,
+    deleteUser
 }   
